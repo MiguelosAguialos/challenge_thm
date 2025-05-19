@@ -10,11 +10,11 @@ export default function Header() {
     { title: "RISCO DE ENCHENTES", link: "/enchentes" },
     { title: "INFORMAÇÕES", link: "/info" },
   ];
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
-      <header className="bg-red-500 text-white">
+      <header className="fixed bg-red-500 text-white top-0 left-0 w-full z-50">
         <div className="md:p-5 max-md:pt-5 max-md:pb-5 max-md:flex max-md:justify-around items-center">
           <h1 className=" max-md:text-2xl md:text-4xl font-bold">
             SOS Enchentes SP
@@ -24,13 +24,13 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           ></Bars3Icon>
           <div
-            className={`absolute md:hidden top-14 flex flex-col transform transition-transform ${
-              isMenuOpen ? "opacity-100" : "opacity-0"
-            } bg-red-700 w-80 rounded-md`}
+            className={`absolute md:hidden top-14 flex flex-col transform transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"
+              } bg-red-700 w-80 rounded-md`}
             style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
           >
             {menuItems.map((item) => (
               <NavLink
+                key={item.link} // 👈 aqui!
                 to={item.link}
                 style={({ isActive, isPending, isTransitioning }) => {
                   return {
