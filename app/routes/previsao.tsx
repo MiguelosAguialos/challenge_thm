@@ -40,7 +40,7 @@ export default function Previsao() {
       <div className="w-full flex justify-center items-center flex-col text-center">
         <img src={PrevisaoTempo} className="p-6 md:w-[50%]" alt="" />
         <h1 className="max-md:text-2xl md:text-4xl font-bold">
-          Avisos Meteorológicos
+          AVISOS METEOROLÓGICOS
         </h1>
         <div className="grid grid-cols-3 gap-4 w-full p-12">
           <div className="">
@@ -119,7 +119,6 @@ export default function Previsao() {
           </div>
         </div>
       </div>
-      <footer className="text-center text-gray-500 mt-10">Footer</footer>
     </>
   );
 }

@@ -18,7 +18,6 @@ export default function Home() {
       <HeroSection />
       <MainContent />
       <AlertaSection />
-      <footer className="text-center text-gray-500 mt-10">Footer</footer>
     </>
   );
 }
