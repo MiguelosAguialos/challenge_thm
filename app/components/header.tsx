@@ -1,12 +1,12 @@
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 export default function Header() {
+  const location = useLocation();
   const menuItems = [
-    { title: "HOME", link: "" },
-    { title: "PREVISÃO", link: "/previsao" },
-    { title: "SATÉLITES", link: "/satelites" },
+    { title: "HOME", link: "/" },
+    { title: "PREVISÃO E SATÉLITES", link: "/previsao" },
     { title: "RISCO DE ENCHENTES", link: "/enchentes" },
     { title: "INFORMAÇÕES", link: "/info" },
   ];
@@ -24,19 +24,21 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           ></Bars3Icon>
           <div
-            className={`absolute md:hidden top-14 flex flex-col transform transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"
-              } bg-red-700 w-80 rounded-md`}
+            className={`absolute md:hidden top-14 flex flex-col transform transition-transform ${
+              isMenuOpen ? "opacity-100" : "opacity-0"
+            } bg-red-700 w-80 rounded-md`}
             style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
           >
             {menuItems.map((item) => (
               <NavLink
                 key={item.link} // 👈 aqui!
                 to={item.link}
-                style={({ isActive, isPending, isTransitioning }) => {
+                style={() => {
                   return {
-                    fontWeight: isActive ? "bold" : "",
-                    color: isActive ? "black" : "white",
-                    viewTransitionName: isTransitioning ? "slide" : "",
+                    fontWeight: location.pathname == item.link ? "bold" : "",
+                    color: location.pathname == item.link ? "black" : "white",
+                    viewTransitionName:
+                      location.pathname == item.link ? "slide" : "",
                   };
                 }}
                 className="pt-2 pb-2 w-full flex justify-center"
@@ -54,12 +56,14 @@ export default function Header() {
         >
           {menuItems.map((item) => (
             <NavLink
+              key={item.link}
               to={item.link}
-              style={({ isActive, isPending, isTransitioning }) => {
+              style={() => {
                 return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isActive ? "black" : "white",
-                  viewTransitionName: isTransitioning ? "slide" : "",
+                  fontWeight: location.pathname == item.link ? "bold" : "",
+                  color: location.pathname == item.link ? "black" : "white",
+                  viewTransitionName:
+                    location.pathname == item.link ? "slide" : "",
                 };
               }}
             >

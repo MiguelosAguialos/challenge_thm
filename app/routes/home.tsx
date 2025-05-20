@@ -4,9 +4,9 @@ import Header from "~/components/header";
 import HeroSection from "~/components/herosection";
 import MainContent from "~/components/maincontent";
 import AlertaSection from "~/components/alertasection";
-export function meta({ }: Route.MetaArgs) {
+export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "SOS Enchentes SP" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
@@ -19,7 +19,6 @@ export default function Home() {
       <MainContent />
       <AlertaSection />
       <footer className="text-center text-gray-500 mt-10">Footer</footer>
-
     </>
   );
 }
